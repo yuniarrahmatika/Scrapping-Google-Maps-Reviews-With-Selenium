@@ -3,8 +3,8 @@ from selenium.webdriver.common.keys import Keys
 import re #regular exp
 import unicodecsv as csv 
 import time
-driver = webdriver.Chrome(executable_path="C:/Users/yuniar tika/Downloads/chromedriver_win32/chromedriver.exe")
-driver.get("https://www.google.com/maps/place/Jl.+Malioboro,+Sosromenduran,+Gedong+Tengen,+Kota+Yogyakarta,+Daerah+Istimewa+Yogyakarta/@-7.7926306,110.3636555,17z/data=!4m7!3m6!1s0x2e7a5825fa6106c5:0x3ea4c521a5ed1133!8m2!3d-7.7926306!4d110.3658442!9m1!1b1")
+driver = webdriver.Chrome(executable_path="your-path-chromedriver/chromedriver.exe")
+driver.get("your-link-google-maps")
 time.sleep(5)
 reviews = driver.find_elements_by_xpath("//button[@class='widget-pane-link']")
 driver.execute_script(
@@ -17,7 +17,7 @@ driver.execute_script(
 time.sleep(5)
 comment_text = driver.find_elements_by_xpath(".//div[@class='section-review-content']")
 def writeTofile(data):
-    with open('datawisataxxx.csv', mode='ab') as csv_file:
+    with open('your-name-file.csv', mode='ab') as csv_file:
         fieldnames =['id', 'user','komentar']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames,lineterminator='\n')
         writer.writerow(data)
